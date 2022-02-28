@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0e4ba70527f2854abb5feaf3fc06fea, type: 3}
+  m_Name: Revolver
+  m_EditorClassIdentifier: 
+  Name: Revolver
+  ItemType: 0
+  Sprite: {fileID: 21300000, guid: 877f0a61f04a1dd4daa6252c27fed8cb, type: 3}
+  worldRepresentation: {fileID: 1588224517148330096, guid: d7d7d9958c8c69c4ab2fce4d5b2d34d6, type: 3}
+  handsRepresentation: {fileID: 9153461383877834233, guid: f06e3962412c32d4081d7ffa87bd74ac, type: 3}
+  id: 0
+  maxAmmoAmount: 6
+  weaponType: 1
+  reloadTime: 5
+  shootingRate: 2
+  bulletSpeed: 800
+  damage: 20
+  requiredAmmoType: 0
+  ammoAmount: 5
