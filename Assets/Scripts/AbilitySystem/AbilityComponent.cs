@@ -93,7 +93,7 @@ public class AbilityComponent : MonoBehaviour
         var ability = Activator.CreateInstance<T>();
         ability.transform = this.transform;
         ability.entityComponent = GetComponent<EntityComponent>();
-        _abilities.Add(new AbilityItem() with{value = ability, jobHandle = null});
+        _abilities.Add(new AbilityItem {value = ability, jobHandle = null});
         ability.OnStart();
         return ability;
     }
@@ -101,11 +101,7 @@ public class AbilityComponent : MonoBehaviour
     [CanBeNull]
     public T Get<T>() where T : Ability
     {
-        if(_abilities.Any(x=>x.GetType() == typeof(T)))
-        {
-            return (T)_abilities.First(x => x.GetType() == typeof(T)).value;
-        }
-        return null;
+        return (T)_abilities.FirstOrDefault(x => x.GetType() == typeof(T))?.value;
     }
 
     public void Remove(Ability ability)

@@ -18,7 +18,7 @@ public class FightManager : MonoBehaviour
     private bool isISwitchMusic = false;
     private List<Transform> enemiesPositions = new List<Transform>();
 
-    [SerializeField]private List<EnemyPathfinding> holdingEnemies = new List<EnemyPathfinding>();
+    [SerializeField] private List<EnemyPathfinding> holdingEnemies = new List<EnemyPathfinding>();
     [SerializeField] private List<EnemyPathfinding> attackingEnemies = new List<EnemyPathfinding>();
 
 
@@ -75,7 +75,7 @@ public class FightManager : MonoBehaviour
                 holdingEnemies.Add(Instantiate(enemyPrefabs[enemyIndex], enemiesPositions[i].position + new Vector3(0, 3f, 0), Quaternion.identity, transform.Find("Enemies").transform).GetComponent<EnemyPathfinding>());
             }
         }
-
+        StartCoroutine("ChangeHoldingPositions");
         AssignAttackers();
 
         CheckForFightEnd();
@@ -83,27 +83,52 @@ public class FightManager : MonoBehaviour
 
     public void AssignAttackers()
     {
-        while (attackingEnemies.Count < activeAttackers) {
+        while (holdingEnemies.Count != 0 && attackingEnemies.Count < activeAttackers) {
             int roll = Random.Range(0, holdingEnemies.Count);
+            print(holdingEnemies.Count.ToString() + " " + roll.ToString());
             attackingEnemies.Add(holdingEnemies[roll]);
             holdingEnemies.RemoveAt(roll);
-            attackingEnemies[roll].isAttacker = true;
+            EnemyPathfinding currentEnemy = attackingEnemies.Last();
+            currentEnemy.isAttacker = true;
+            if (currentEnemy.holdPosition != null) {
+                currentEnemy.holdPosition.GetComponent<PositionManager>().FreePosition();
+                currentEnemy.holdPosition = null;
+            }
+            
         }
 
-        foreach (EnemyPathfinding enemy in holdingEnemies) {
+        AssignHoldingPositions();
+    }
+
+    private void AssignHoldingPositions() {
+        holdingEnemies = holdingEnemies.Where(item => item != null).ToList();
+        for(int i = 0; i < holdingEnemies.Count; i++)
+        {
+            EnemyPathfinding enemy = holdingEnemies[i];
             float maxLengthFromPlayer = -1f;
             int selectedPosition = 0;
             List<Transform> unusedEnemiesPositions = enemiesPositions.FindAll(e => !e.GetComponent<PositionManager>().GetIsTaked());
             Vector3 playerPosition = GameObject.FindWithTag("Player").transform.position;
-            for (int i = 0; i < enemiesPositions.Count; i++) {
-                float distance = Vector3.Distance(enemiesPositions[i].position, playerPosition);
-                if (distance > maxLengthFromPlayer) {
+            for (int j = 0; j < enemiesPositions.Count; j++)
+            {
+                float distance = Vector3.Distance(enemiesPositions[j].position, playerPosition);
+                if (distance > maxLengthFromPlayer)
+                {
                     maxLengthFromPlayer = distance;
-                    selectedPosition = i;
+                    selectedPosition = j;
                 }
             }
             enemy.holdPosition = enemiesPositions[selectedPosition];
+            enemy.holdPosition.GetComponent<PositionManager>().TakePosition();
             enemy.isAttacker = false;
+        }
+    }
+
+
+    IEnumerator ChangeHoldingPositions () {
+        while (true) {
+            AssignHoldingPositions();
+            yield return new WaitForSeconds(1f);
         }
     }
 
@@ -124,6 +149,7 @@ public class FightManager : MonoBehaviour
 
     private void FightEndSequence()
     {
+        StopCoroutine("ChangeHoldingPositions");
         OpenDoors();
     }
 
@@ -136,5 +162,8 @@ public class FightManager : MonoBehaviour
             door.Unlock();
         }
 
+    }
+    public void ClearDeadEnemy(EnemyPathfinding enemy) {
+        attackingEnemies.Remove(enemy);
     }
 }

@@ -80,10 +80,11 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 595997228727128169, guid: 1ca12f0512be37247bbbbc2136b6e020, type: 3}
   - {fileID: 8629314947712286517, guid: 52a09d252aa4eb641b44a97174627965, type: 3}
-  - {fileID: 595997228727128169, guid: c3b1bbdd61d94c84e86f1b8adf91129a, type: 3}
-  - {fileID: 8629314947712286517, guid: 21c775075c0b1cc46b69db259ac3ae95, type: 3}
   enemyPercent: 50
+  activeAttackers: 1
   musicManager: {fileID: 0}
+  holdingEnemies: []
+  attackingEnemies: []
 --- !u!1 &742958984657058674
 GameObject:
   m_ObjectHideFlags: 0

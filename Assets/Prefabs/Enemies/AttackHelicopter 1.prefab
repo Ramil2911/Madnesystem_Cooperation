@@ -2011,7 +2011,7 @@ GameObject:
   - component: {fileID: -2612737722313199142}
   m_Layer: 0
   m_Name: AttackHelicopter 1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2098,10 +2098,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  speed: 6
+  _speed: 10
   distanceReaction: 25
   canAttack: 0
   playerIsNear: 0
+  isAttacker: 0
+  holdPosition: {fileID: 0}
 --- !u!114 &-2612737722313199142
 MonoBehaviour:
   m_ObjectHideFlags: 0

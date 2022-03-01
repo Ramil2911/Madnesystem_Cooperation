@@ -42,7 +42,7 @@ public class EntityComponent : MonoBehaviour
 
         if(isPlayer == false)
         {
-            GameObject.Find("Manager").GetComponent<FightManager>().AssignAttackers();
+            EnemyDead();
             if (explosion != null)
             {
                 Instantiate(explosion, transform.position, transform.rotation);
@@ -55,9 +55,21 @@ public class EntityComponent : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void Update()
+    private void EnemyDead()
     {
-        
+        if (transform.TryGetComponent<EnemyPathfinding>(out var enemy))
+        {
+            if (enemy.isAttacker) {
+                FightManager fightManager = transform.parent.parent.GetComponent<FightManager>();
+                fightManager.ClearDeadEnemy(enemy);
+                fightManager.AssignAttackers();
+            }
+            if (enemy.holdPosition)
+            {
+                enemy.holdPosition.GetComponent<PositionManager>().FreePosition();
+                enemy.holdPosition = null;
+            }
+        }
     }
 }
 

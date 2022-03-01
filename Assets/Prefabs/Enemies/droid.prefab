@@ -224,7 +224,7 @@ MonoBehaviour:
   body: {fileID: 9204915274120059469}
   stepDistance: 1.5
   stepHeight: 1
-  speed: 5
+  speed: 10
   audioSource: {fileID: 0}
 --- !u!1 &325386738118145169
 GameObject:
@@ -277,7 +277,7 @@ MonoBehaviour:
   body: {fileID: 9204915274120059469}
   stepDistance: 1.5
   stepHeight: 1
-  speed: 5
+  speed: 10
   audioSource: {fileID: 0}
 --- !u!1 &325386738503960820
 GameObject:
@@ -510,7 +510,7 @@ MonoBehaviour:
   body: {fileID: 9204915274120059469}
   stepDistance: 1.5
   stepHeight: 1
-  speed: 5
+  speed: 10
   audioSource: {fileID: 8337413152795805659}
 --- !u!1 &325386739227426723
 GameObject:
@@ -563,7 +563,7 @@ MonoBehaviour:
   body: {fileID: 9204915274120059469}
   stepDistance: 1.5
   stepHeight: 1
-  speed: 5
+  speed: 10
   audioSource: {fileID: 8337413152795805659}
 --- !u!1 &325386739304847981
 GameObject:
@@ -704,7 +704,7 @@ GameObject:
   - component: {fileID: 5522935848261515835}
   m_Layer: 2
   m_Name: droid
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -764,10 +764,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  speed: 4
+  _speed: 7
   distanceReaction: 25
   canAttack: 0
   playerIsNear: 0
+  isAttacker: 0
+  holdPosition: {fileID: 0}
 --- !u!114 &8878341531028252206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -780,8 +782,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4225a19a2a773f143acab4153e1e523e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
-  MaxHealth: 100
+  Health: 60
+  MaxHealth: 60
   Regeneration: 0.2
   isImmuneToFire: 0
   isImmuneToRadiation: 1

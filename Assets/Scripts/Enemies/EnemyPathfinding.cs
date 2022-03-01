@@ -38,7 +38,7 @@ public class EnemyPathfinding : MonoBehaviour
 
     private void CheckVisibility()
     {
-        if (Physics.Linecast(transform.position, _player.position) && Vector3.Distance(transform.position, _player.position) <= distanceReaction)
+        if (Physics.Linecast(transform.position, _player.position + _player.transform.up) && Vector3.Distance(transform.position, _player.position) <= distanceReaction)
         {
             Debug.DrawLine(transform.position, _player.position);
             _agent.speed = 0.01f;

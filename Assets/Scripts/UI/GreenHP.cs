@@ -15,13 +15,13 @@ public class GreenHP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player.TryGetComponent<RadiationSourceComponent>(out var rad) && rad.inheritedDamage > 0.0f)
+        /*if (Player.TryGetComponent<RadiationSourceComponent>(out var rad) && rad.inheritedDamage > 0.0f)
         {
             text.color = Color.green;
         }
         else
         {
             text.color = Color.red;
-        }
+        }*/
     }
 }

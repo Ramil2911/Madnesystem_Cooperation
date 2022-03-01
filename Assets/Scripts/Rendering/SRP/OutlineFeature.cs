@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.Rendering;
 using UnityEngine.Experimental.Rendering;
@@ -53,5 +53,5 @@ public class OutlineFeature : CustomPass
     {
         CoreUtils.Destroy(_material);
         _buffer.Release();
-    }*/
-}
+    }#1#
+}*/

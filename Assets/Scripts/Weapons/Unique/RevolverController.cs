@@ -3,12 +3,11 @@ using UnityEngine.UI;
 
 public class RevolverController : WeaponController
 {
-    public Animator animator;
     public VFXController vfxController;
-    
     private static readonly int State = Animator.StringToHash("State");
-    public bool doIShoot = false;
     public GameObject bullet;
+    
+    //recoil
     public Vector2 impact = new Vector2(.1f, .1f);
     public float impactDuration = 0.1f;
 

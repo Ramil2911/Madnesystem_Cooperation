@@ -13,7 +13,8 @@ public class InteractionComponent : MonoBehaviour
     void Update()
     {
         if (Physics.Linecast(cameraTransform.position, cameraTransform.position + (cameraTransform.forward) * maxDistance, out var hit, layerMask)
-            && (hit.transform.TryGetComponent<Interactable>(out var interactable) || hit.transform.parent.TryGetComponent(out interactable)))
+            && (hit.transform.TryGetComponent<Interactable>(out var interactable) ||
+                (hit.transform.parent != null && hit.transform.parent.TryGetComponent(out interactable))))
         {
             if (Input.GetKeyDown(KeyCode.E))
             {

@@ -112,9 +112,9 @@ public class HandsController : MonoBehaviour
         hands = item.description.SpawnHandsRepresentation(this.gameObject, this);
         //_hands.transform.rotation = rotation;
         //_fpsController.cam = _hands.transform;
-        var revolverController = hands.GetComponent<WeaponController>();
-        revolverController.weaponObject = (WeaponDescription)item.description; //TODO: correct type conversion
-        revolverController.recoilController = recoilController;
+        var weaponController = hands.GetComponent<WeaponController>();
+        weaponController.weaponObject = (WeaponDescription)item.description; //TODO: correct type conversion
+        weaponController.recoilController = recoilController;
         interactionComponent.cameraTransform = hands.transform;
     }
 
