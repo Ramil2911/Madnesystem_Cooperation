@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class SetEndShoot : MonoBehaviour
 {
-    WeaponController weaponController;
+    RevolverController revolverController;
     // Start is called before the first frame update
     void Start()
     {
-        weaponController = GetComponentInParent<WeaponController>();
+        revolverController = GetComponentInParent<RevolverController>();
     }
     public void IShoot()
     {
-        weaponController.doIShoot = true;
+        revolverController.doIShoot = true;
     }
     public void EndShoot()
     {
-        weaponController.doIShoot = false;
+        revolverController.doIShoot = false;
     }
 }

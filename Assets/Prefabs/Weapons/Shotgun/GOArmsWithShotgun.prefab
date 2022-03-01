@@ -1834,8 +1834,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5024844736404588388}
-  - component: {fileID: 5482618071243622351}
-  - component: {fileID: -1813710053531310746}
+  - component: {fileID: 5889737670491195249}
+  - component: {fileID: 6740986859504017206}
+  - component: {fileID: 5392491834303512498}
+  - component: {fileID: 4208078818377938419}
+  - component: {fileID: 3308312628406195533}
+  - component: {fileID: 5675560834586413460}
+  - component: {fileID: 7836120216113289544}
   m_Layer: 0
   m_Name: GOArmsWithShotgun
   m_TagString: Untagged
@@ -1860,7 +1865,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5482618071243622351
+--- !u!95 &5889737670491195249
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5688051855487360478}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6740986859504017206
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1869,11 +1894,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5688051855487360478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172b7d50d23166b4a8ac77320d587f86, type: 3}
+  m_Script: {fileID: 11500000, guid: 95130ae9e02e5f04d8b60a2998aab9c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 8455982873147120974}
---- !u!114 &-1813710053531310746
+--- !u!114 &5392491834303512498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1882,10 +1906,64 @@ MonoBehaviour:
   m_GameObject: {fileID: 5688051855487360478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19a7d9772f1e2194ea64add1e1ce887f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d5c8f5a2183b994eb6667a48231881a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 0}
+  visualEffect: {fileID: 0}
+  particleSystem: {fileID: 0}
+--- !u!114 &4208078818377938419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5688051855487360478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95130ae9e02e5f04d8b60a2998aab9c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3308312628406195533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5688051855487360478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 214080885d7ca51498e1335aa275ff5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: []
+--- !u!114 &5675560834586413460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5688051855487360478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f4edee4592b3c4ab46bd7d448c5fab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
+  recoilController: {fileID: 0}
+  ammo: {fileID: 0}
+--- !u!114 &7836120216113289544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5688051855487360478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f413dca9ba12d284789326970b768238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.8
 --- !u!1 &5910890543600249075
 GameObject:
   m_ObjectHideFlags: 0

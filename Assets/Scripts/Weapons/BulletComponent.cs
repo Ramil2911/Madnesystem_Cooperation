@@ -2,6 +2,7 @@ using System;
 using Mirror;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
+using UnityEngine.VFX;
 
 public class BulletComponent : NetworkBehaviour
 {
@@ -38,15 +39,16 @@ public class BulletComponent : NetworkBehaviour
                 
                 entityComponent.Damage(damageAmount, null);
             }
-            SpawnExplosion();
+            SpawnExplosion(other);
             Destroy(gameObject);
     }
 
-    private void SpawnExplosion()
+    private void SpawnExplosion(Collision other)
     {
         if(explosion != null)
         {
             var go = Instantiate(explosion, transform.position, transform.rotation);
+            go.GetComponent<VisualEffect>().SetVector3("Direction", new Vector3(0,0,0));
         }
     }
 }

@@ -9,8 +9,7 @@ public class SettingsInMainMenu : MonoBehaviour
     public Volume curPostProcessing;
     public VolumeProfile[] allPostProcessings;
 
-    public TMPro.TMP_InputField mouseSensitivity;
-
+    public Slider mouseSensitivity;
     public Slider musicVolumeSlider;
     public Slider soundsVolumeSlider;
 
@@ -36,7 +35,7 @@ public class SettingsInMainMenu : MonoBehaviour
         }
         if(PlayerPrefs.HasKey("mouseSensitivity"))
         {
-            mouseSensitivity.text = PlayerPrefs.GetFloat("mouseSensitivity").ToString();
+            mouseSensitivity.value = PlayerPrefs.GetFloat("mouseSensitivity");
         }
         if(PlayerPrefs.HasKey("MusicVolume"))
         {
@@ -56,48 +55,12 @@ public class SettingsInMainMenu : MonoBehaviour
         QualitySettings.SetQualityLevel(dropdownQuality.value, true); //Изменяем уровен графики
 
         PlayerPrefs.SetInt("idQuality", dropdownQuality.value);
-        switch(dropdownQuality.value)
-        {
-            case 0:
-                curPostProcessing.profile = allPostProcessings[0];
-            break;
-            case 1:
-                curPostProcessing.profile = allPostProcessings[1];
-            break;
-            case 2:
-                curPostProcessing.profile = allPostProcessings[2];
-            break;
-            case 3:
-                curPostProcessing.profile = allPostProcessings[3];
-            break;
-            case 4:
-                curPostProcessing.profile = allPostProcessings[4];
-            break;
-            case 5:
-                curPostProcessing.profile = allPostProcessings[5];
-            break;
-        }
-
-        
+        curPostProcessing.profile = allPostProcessings[dropdownQuality.value];
     }
 
     public void SetMouseSensitivity()
     {
-        int curMouseSensitivity = 1;
-        if(PlayerPrefs.HasKey("mouseSensitivity"))
-        {
-            curMouseSensitivity = PlayerPrefs.GetInt("mouseSensitivity");
-        }
-        try
-        {
-            curMouseSensitivity = int.Parse(mouseSensitivity.text);
-            print(curMouseSensitivity);
-        }
-        catch
-        {
-            //владик лох
-        }
-        PlayerPrefs.SetInt("mouseSensitivity", curMouseSensitivity);
+        PlayerPrefs.SetFloat("mouseSensitivity", mouseSensitivity.value);
         applier.ApplySensitivity();
     }
 

@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : Interactable
 {
     private bool _canBeOpened = true;
+    private static readonly int IsOpen = Animator.StringToHash("isOpen");
 
     public void Lock()
     {
@@ -23,28 +22,33 @@ public class Door : MonoBehaviour
 
     public void Close()
     {
-        Animator animator = transform.GetComponent<Animator>();
-        bool currentState = animator.GetBool("isOpen");
+        var animator = transform.GetComponent<Animator>();
+        var currentState = animator.GetBool(IsOpen);
         if (currentState)
         {
-            animator.SetBool("isOpen", false);
+            animator.SetBool(IsOpen, false);
         }
     }
     
     public void Open()
     {
-        Animator animator = transform.GetComponent<Animator>();
-        bool currentState = animator.GetBool("isOpen");
+        var animator = transform.GetComponent<Animator>();
+        var currentState = animator.GetBool(IsOpen);
         if (!currentState)
         {
-            animator.SetBool("isOpen", true);
+            animator.SetBool(IsOpen, true);
         }
     }
     
     public void Activate()
     {
-        Animator animator = transform.GetComponent<Animator>();
-        bool currentState = animator.GetBool("isOpen");
-        animator.SetBool("isOpen", !currentState);
+        var animator = transform.GetComponent<Animator>();
+        var currentState = animator.GetBool(IsOpen);
+        animator.SetBool(IsOpen, !currentState);
+    }
+
+    public override void Interact(GameObject actor)
+    {
+        Activate();
     }
 }

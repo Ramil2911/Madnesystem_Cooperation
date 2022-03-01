@@ -339,7 +339,8 @@ MonoBehaviour:
   damageAmount: 10
   timeToLive: 100
   speed: 30
-  explosion: {fileID: 0}
+  explosion: {fileID: 2904185924869697647, guid: 992cbca7dfb797143bd112f4fb4c95a0, type: 3}
+  owner: {fileID: 0}
 --- !u!54 &7499881186190274188
 Rigidbody:
   m_ObjectHideFlags: 0

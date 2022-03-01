@@ -39,8 +39,10 @@ public class EntityComponent : MonoBehaviour
 
     public void Dead()
     {
+
         if(isPlayer == false)
         {
+            GameObject.Find("Manager").GetComponent<FightManager>().AssignAttackers();
             if (explosion != null)
             {
                 Instantiate(explosion, transform.position, transform.rotation);

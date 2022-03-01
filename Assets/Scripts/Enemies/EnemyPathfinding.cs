@@ -7,11 +7,14 @@ using UnityEngine.AI;
 public class EnemyPathfinding : MonoBehaviour
 {
     [SerializeField] private Transform _player;
+    [SerializeField] private float _speed = 2;
     private NavMeshAgent _agent;
-    [SerializeField] private float speed = 2;
     public float distanceReaction = 10;
     public bool canAttack = false;
     public bool playerIsNear = false;
+    public bool isAttacker = false;
+    public Transform holdPosition = null;
+
     private void Start()
     {
         
@@ -26,18 +29,11 @@ public class EnemyPathfinding : MonoBehaviour
 
     private void Pathfinding()
     {
-        if (playerIsNear == false)
-        {
-            _agent.SetDestination(_player.position);
-            _agent.speed = speed;
-            _agent.angularSpeed = 120f;
-            canAttack = false;
-        }
-        else
-        {
-            CheckVisibility();
-        }
-
+        if (isAttacker) {
+            AttackPlayer();
+            return;
+        } 
+        FollowHoldPosition();
     }
 
     private void CheckVisibility()
@@ -55,4 +51,28 @@ public class EnemyPathfinding : MonoBehaviour
             canAttack = false;
         }
     }
+
+    private void AttackPlayer() {
+        if (playerIsNear == false)
+        {
+            FollowPoint(_player);
+            canAttack = false;
+        }
+        else
+        {
+            CheckVisibility();
+        }
+    }
+
+    private void FollowHoldPosition() {
+        FollowPoint(holdPosition);
+    }
+
+    private void FollowPoint(Transform point) {
+        _agent.SetDestination(point.position);
+        _agent.speed = _speed;
+        _agent.angularSpeed = 120f;
+    }
+
+
 }

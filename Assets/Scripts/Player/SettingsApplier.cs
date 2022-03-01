@@ -43,6 +43,6 @@ public class SettingsApplier : MonoBehaviour
 
     public void ApplySensitivity()
     {
-        controller.sensitivity = PlayerPrefs.GetInt("mouseSensitivity");
+        controller.sensitivity = PlayerPrefs.GetFloat("mouseSensitivity");
     }
 }

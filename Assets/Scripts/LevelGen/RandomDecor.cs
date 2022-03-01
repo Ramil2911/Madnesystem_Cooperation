@@ -5,6 +5,7 @@ using UnityEngine;
 public class RandomDecor : MonoBehaviour
 {
     [SerializeField] private GameObject[] decorPrefabs;
+    [SerializeField] private int chance = 100;
     
     private DungeonGenerator generator;
     private bool isCompleted;
@@ -21,10 +22,13 @@ public class RandomDecor : MonoBehaviour
         if (!isCompleted && generator.dungeonState == DungeonState.Completed)
         {
             isCompleted = true;
-            int decorIndex = Random.Range(0, decorPrefabs.Length);
-            GameObject goDecor = Instantiate(decorPrefabs[decorIndex], transform.position, transform.rotation,
-                transform) as GameObject;
-            goDecor.name = decorPrefabs[decorIndex].name;
+            int roll = Random.Range(0, 100);
+            if (roll <= chance) {
+                int decorIndex = Random.Range(0, decorPrefabs.Length);
+                GameObject goDecor = Instantiate(decorPrefabs[decorIndex], transform.position, transform.rotation,
+                    transform) as GameObject;
+                goDecor.name = decorPrefabs[decorIndex].name;
+            }
         }
     }
 }

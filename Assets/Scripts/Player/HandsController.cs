@@ -5,16 +5,16 @@ using UnityEngine.Events;
 
 public class HandsController : MonoBehaviour
 {
-    public InventoryComponent inventory;
     public FPSController fpsController;
-    public InteractionComponent _interactionComponent;
 
     public GameObject empty;
     
     public uint slot;
 
     private InventoryItem _currentItem;
-
+    
+    
+    public InteractionComponent _interactionComponent;
     private InteractionComponent interactionComponent //i'm gonna write an attribute for this
     {
         get
@@ -23,6 +23,8 @@ public class HandsController : MonoBehaviour
             return _interactionComponent;
         }
     }
+    
+    public InventoryComponent inventory;
     public InventoryItem item //i got an error indicating that some start function had started later than another one, so this is just a convinient way to avoid errors 
     {
         get
@@ -31,10 +33,20 @@ public class HandsController : MonoBehaviour
             return inventory[(int) slot];
         }
     }
+    
+    private RecoilController _recoilController;
+    public RecoilController recoilController
+    {
+        get
+        {
+            _recoilController ??= GetComponent<RecoilController>();
+            return _recoilController;
+        }
+    }
 
     public UnityEvent activeSlotChangedEvent = new();
 
-    public GameObject _hands;
+    public GameObject hands;
     private ushort SIZE = 8; 
 
     // Start is called before the first frame update
@@ -92,29 +104,31 @@ public class HandsController : MonoBehaviour
 
 
         //var rotation = Quaternion.identity;
-        if (_hands != null)
+        if (hands != null)
         {
             //rotation = _hands.transform.rotation;
         }
-        DestroyImmediate(_hands);
-        _hands = item.description.SpawnHandsRepresentation(this.gameObject, this);
+        DestroyImmediate(hands);
+        hands = item.description.SpawnHandsRepresentation(this.gameObject, this);
         //_hands.transform.rotation = rotation;
         //_fpsController.cam = _hands.transform;
-        _hands.GetComponent<WeaponController>().weaponObject = (WeaponDescription)item.description; //TODO: correct type conversion
-        interactionComponent.cameraTransform = _hands.transform;
+        var revolverController = hands.GetComponent<WeaponController>();
+        revolverController.weaponObject = (WeaponDescription)item.description; //TODO: correct type conversion
+        revolverController.recoilController = recoilController;
+        interactionComponent.cameraTransform = hands.transform;
     }
 
     private void SpawnEmpty()
     {
 
         var rotation = Quaternion.identity;
-        if (_hands != null)
+        if (hands != null)
         {
-            rotation = _hands.transform.rotation;
+            rotation = hands.transform.rotation;
         }
-        DestroyImmediate(_hands);
-        _hands = Instantiate(empty, this.transform.position, rotation, this.transform);
+        DestroyImmediate(hands);
+        hands = Instantiate(empty, this.transform.position, rotation, this.transform);
         //_fpsController.cam = _hands.transform;
-        interactionComponent.cameraTransform = _hands.transform;
+        interactionComponent.cameraTransform = hands.transform;
     }
 }

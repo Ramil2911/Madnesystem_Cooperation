@@ -218,6 +218,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5815821639255701377, guid: 3b0d412540b6f3248b62d22a1477641a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.49748743
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815821639255701377, guid: 3b0d412540b6f3248b62d22a1477641a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012177788437174720, guid: 3b0d412540b6f3248b62d22a1477641a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.49748743
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012177788437174720, guid: 3b0d412540b6f3248b62d22a1477641a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012177788437174720, guid: 3b0d412540b6f3248b62d22a1477641a, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.49748743
+      objectReference: {fileID: 0}
     - target: {fileID: 6584975639184072238, guid: 3b0d412540b6f3248b62d22a1477641a, type: 3}
       propertyPath: handsController
       value: 
@@ -226,6 +246,26 @@ PrefabInstance:
       propertyPath: inventoryComponent
       value: 
       objectReference: {fileID: 835410956}
+    - target: {fileID: 6922298311926893649, guid: 3b0d412540b6f3248b62d22a1477641a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922298312053685413, guid: 3b0d412540b6f3248b62d22a1477641a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922298312222543983, guid: 3b0d412540b6f3248b62d22a1477641a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922298313478103430, guid: 3b0d412540b6f3248b62d22a1477641a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922298313839137837, guid: 3b0d412540b6f3248b62d22a1477641a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8407454152576928255, guid: 3b0d412540b6f3248b62d22a1477641a, type: 3}
       propertyPath: entityComponent
       value: 
@@ -576,6 +616,14 @@ PrefabInstance:
       propertyPath: defaultWeapons.Array.size
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 136625487414680186, guid: e90e45ff6cb98a84fb1d909c284ce4f0, type: 3}
+      propertyPath: defaultWeapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 45cddbf16c304de458f22e8bc0af0644, type: 2}
+    - target: {fileID: 136625487414680186, guid: e90e45ff6cb98a84fb1d909c284ce4f0, type: 3}
+      propertyPath: defaultWeapons.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 45cddbf16c304de458f22e8bc0af0644, type: 2}
     - target: {fileID: 3771990111314864609, guid: e90e45ff6cb98a84fb1d909c284ce4f0, type: 3}
       propertyPath: ammo
       value: 

@@ -14,5 +14,5 @@ public class Empty : WeaponDescription
         => Object.Instantiate(this.worldRepresentation, pos, rotation);
 
     public override GameObject SpawnHandsRepresentation(GameObject parent, HandsController hands)
-        => Object.Instantiate(this.handsRepresentation, parent.transform.position + Vector3.up * 2, hands._hands == null ? Quaternion.identity : hands._hands.transform.rotation, parent.transform);
+        => Object.Instantiate(this.handsRepresentation, parent.transform.position + Vector3.up * 2, hands.hands == null ? Quaternion.identity : hands.hands.transform.rotation, parent.transform);
 }

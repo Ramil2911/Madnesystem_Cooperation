@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.HighDefinition;
 
 public class GameMenuManager : MonoBehaviour
 {
@@ -14,6 +11,11 @@ public class GameMenuManager : MonoBehaviour
     public static Volume curPostProcessing;
 
     public VolumeProfile[] allPostProcessings;
+
+    public GameObject player;
+    public PlayerDisabler disabler;
+    private static readonly string idqualityKey = "idQuality";
+
     void Start()
     {
        ChangeQuality();
@@ -31,14 +33,14 @@ public class GameMenuManager : MonoBehaviour
         {
             Time.timeScale = 0;
             gameMenu.SetActive(true);
-            Cursor.visible = false;
+            disabler.Disable();
         }
         else
         {
             Time.timeScale = 1;
             gameMenu.SetActive(false);
-            Cursor.visible = true;
-            if(settingsPanel.activeSelf == true)
+            disabler.Enable();
+            if(settingsPanel.activeSelf)
             {
                 settingsPanel.SetActive(false);
             }
@@ -48,19 +50,19 @@ public class GameMenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-    public void ReturnToGame()
+    public void ReturnToGame() //на ui
     {
         Cursor.visible = false;
         gameMenu.SetActive(false);
         Time.timeScale = 1;  
-        if(settingsPanel.activeSelf == true)
+        if(settingsPanel.activeSelf)
         {
             settingsPanel.SetActive(false);
         }
     }
     public void ChangeActiveSettingsPanel()
     {
-        if(settingsPanel.activeSelf == false)
+        if(!settingsPanel.activeSelf)
         {
             settingsPanel.SetActive(true);
         }
@@ -70,33 +72,11 @@ public class GameMenuManager : MonoBehaviour
         }
     }
     public void ChangeQuality()
-    {   
-        
-        if(PlayerPrefs.HasKey("idPQuality"))
+    {
+        if(PlayerPrefs.HasKey(idqualityKey))
         {
-            QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("idQuality"), true); //Изменяем уровен графики
-
-            switch(PlayerPrefs.GetInt("idQuality"))
-            {
-                case 0:
-                    curPostProcessing.profile = allPostProcessings[0];
-                break;
-                case 1:
-                    curPostProcessing.profile = allPostProcessings[1];
-                break;
-                case 2:
-                    curPostProcessing.profile = allPostProcessings[2];
-                break;
-                case 3:
-                    curPostProcessing.profile = allPostProcessings[3];
-                break;
-                case 4:
-                    curPostProcessing.profile = allPostProcessings[4];
-                break;
-                case 5:
-                    curPostProcessing.profile = allPostProcessings[5];
-                break;
-            }
+            QualitySettings.SetQualityLevel(PlayerPrefs.GetInt(idqualityKey), true); //Изменяем уровен графики
+            curPostProcessing.profile = allPostProcessings[PlayerPrefs.GetInt(idqualityKey)];
         }
     }
 }

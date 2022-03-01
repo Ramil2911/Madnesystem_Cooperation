@@ -3575,7 +3575,6 @@ GameObject:
   - component: {fileID: 3745273270186393541}
   - component: {fileID: 5464384954752549894}
   - component: {fileID: 2181569661775663755}
-  - component: {fileID: 8322007532942367775}
   - component: {fileID: 6006694465917866518}
   - component: {fileID: 5679164100636568818}
   - component: {fileID: 733285794799873723}
@@ -3654,19 +3653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95130ae9e02e5f04d8b60a2998aab9c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8322007532942367775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9153461383877834233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172b7d50d23166b4a8ac77320d587f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _camera: {fileID: 0}
 --- !u!114 &6006694465917866518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3708,11 +3694,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea65eeb045b32494487e4a2874d28ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 1
+  recoilController: {fileID: 0}
+  ammo: {fileID: 0}
   animator: {fileID: 3745273270186393541}
   vfxController: {fileID: 5464384954752549894}
   doIShoot: 0
-  ammo: {fileID: 0}
   bullet: {fileID: 8862067340763788854, guid: e05ee3eef9c1eb74f88c0a80c3d5ab44, type: 3}
+  impact: {x: -1, y: 1}
+  impactDuration: 0.1
 --- !u!114 &-5794558069709338339
 MonoBehaviour:
   m_ObjectHideFlags: 0
