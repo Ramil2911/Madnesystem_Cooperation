@@ -13,16 +13,16 @@ public class PlayerDisabler : MonoBehaviour
 
     public void Disable()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        /*Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;*/
         controller.sensitivity = 0;
         handsController.hands.GetComponent<WeaponController>().isActive = false;
     }
 
     public void Enable()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        /*Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;*/
         controller.sensitivity = PlayerPrefs.GetFloat("mouseSensitivity");
         handsController.hands.GetComponent<WeaponController>().isActive = true;
     }

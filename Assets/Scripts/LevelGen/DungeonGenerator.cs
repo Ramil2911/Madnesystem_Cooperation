@@ -43,7 +43,7 @@ public class DungeonGenerator : MonoBehaviour
     private Transform _container;
     private int _attempts;
     private int _maxAttempts = 50;
-    
+
     private void Start()
     {
         // goCamera = GameObject.Find("OverheadCamera");
@@ -200,6 +200,11 @@ public class DungeonGenerator : MonoBehaviour
                 Vector3 pos = connector.transform.position;
                 int wallIndex = Random.Range(0, blockedPrefabs.Length);
                 GameObject goWall = Instantiate(blockedPrefabs[wallIndex], pos, connector.transform.rotation, connector.transform) as GameObject;
+                if (!goWall.TryGetComponent<ExcludeFromOptimiser>(out _))
+                {
+                    goWall.TryGetComponent<MeshRenderer>(out var renderer);
+                    if (renderer != null) renderer.enabled = false;
+                }
                 goWall.name = blockedPrefabs[wallIndex].name;
             }
         }
@@ -395,6 +400,11 @@ public class DungeonGenerator : MonoBehaviour
     {
         int index = Random.Range(0, tilePrefabs.Length);
         GameObject goTile = Instantiate(tilePrefabs[index], Vector3.zero, Quaternion.identity, _container) as GameObject;
+        if (!goTile.TryGetComponent<ExcludeFromOptimiser>(out _))
+        {
+            goTile.TryGetComponent<MeshRenderer>(out var renderer);
+            if (renderer != null) renderer.enabled = false;
+        }
         Transform origin = generatedTiles[generatedTiles.FindIndex(x => x.tile == _tileFrom)].tile;
         generatedTiles.Add(new Tile(goTile.transform, origin));
         goTile.name = tilePrefabs[index].name;
@@ -405,6 +415,11 @@ public class DungeonGenerator : MonoBehaviour
     {
         int index = Random.Range(0, exitPrefabs.Length);
         GameObject goTile = Instantiate(exitPrefabs[index], Vector3.zero, Quaternion.identity, _container) as GameObject;
+        if (!goTile.TryGetComponent<ExcludeFromOptimiser>(out _))
+        {
+            goTile.TryGetComponent<MeshRenderer>(out var renderer);
+            if (renderer != null) renderer.enabled = false;
+        }
         Transform origin = generatedTiles[generatedTiles.FindIndex(x => x.tile == _tileFrom)].tile;
         generatedTiles.Add(new Tile(goTile.transform, origin));
         goTile.name = "Exit Room";
@@ -416,6 +431,11 @@ public class DungeonGenerator : MonoBehaviour
         
         int index = Random.Range(0, startTilePrefabs.Length);
         GameObject goTile = Instantiate(startTilePrefabs[index], Vector3.zero, Quaternion.identity, _container) as GameObject;
+        if (!goTile.TryGetComponent<ExcludeFromOptimiser>(out _))
+        {
+            goTile.TryGetComponent<MeshRenderer>(out var renderer);
+            if (renderer != null) renderer.enabled = false;
+        }
         goTile.name = "Start Room";
         generatedTiles.Add(new Tile(goTile.transform, null));
         return goTile.transform;
