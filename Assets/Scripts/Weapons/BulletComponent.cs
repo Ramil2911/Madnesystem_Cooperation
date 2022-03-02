@@ -48,7 +48,7 @@ public class BulletComponent : NetworkBehaviour
         if(explosion != null)
         {
             var go = Instantiate(explosion, transform.position, transform.rotation);
-            go.GetComponent<VisualEffect>().SetVector3("Direction", new Vector3(0,0,0));
+            //go.GetComponent<VisualEffect>().SetVector3("Direction", new Vector3(0,0,0));
         }
     }
 }

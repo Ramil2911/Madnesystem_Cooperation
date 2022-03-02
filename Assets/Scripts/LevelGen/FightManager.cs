@@ -117,7 +117,7 @@ public class FightManager : MonoBehaviour
             EnemyPathfinding enemy = holdingEnemies[i];
             float maxLengthFromPlayer = -1f;
             int selectedPosition = 0;
-            List<Transform> unusedEnemiesPositions = enemiesPositions.FindAll(e => !e.GetComponent<PositionManager>().GetIsTaked());
+            List<Transform> unusedEnemiesPositions = enemiesPositions.FindAll(e => !e.GetComponent<PositionManager>().GetIsTaken());
             Vector3 playerPosition = GameObject.FindWithTag("Player").transform.position;
             for (int j = 0; j < enemiesPositions.Count; j++)
             {

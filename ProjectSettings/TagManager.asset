@@ -10,6 +10,9 @@ TagManager:
   - BlockingWall
   - Door
   - RadiationSystem
+  - Enemy
+  - ResetButton
+  - ShootButton
   layers:
   - Default
   - TransparentFX

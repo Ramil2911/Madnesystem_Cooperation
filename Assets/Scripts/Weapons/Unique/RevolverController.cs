@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UniversalMobileController;
 
 public class RevolverController : WeaponController
 {
@@ -11,8 +12,11 @@ public class RevolverController : WeaponController
     public Vector2 impact = new Vector2(.1f, .1f);
     public float impactDuration = 0.1f;
 
-    private void Start() 
+    private SpecialButton button;
+
+    private void Start()
     {
+        button = GameObject.FindWithTag("ShootButton").GetComponent<SpecialButton>();
         Reload();
     }
     void Update()
@@ -29,11 +33,11 @@ public class RevolverController : WeaponController
                 animator.SetInteger(State, 0);
         }
 
-        if (weaponObject.weaponType == WeaponType.Auto && Input.GetKey(KeyCode.Mouse0))
+        if (weaponObject.weaponType == WeaponType.Auto && button.isPressed)
         {
             Shoot();
         }
-        else if (weaponObject.weaponType == WeaponType.SemiAuto && Input.GetKeyDown(KeyCode.Mouse0))
+        else if (weaponObject.weaponType == WeaponType.SemiAuto && button.isDown)
         {
             if (doIShoot == false)
             {
@@ -55,7 +59,7 @@ public class RevolverController : WeaponController
         
         if(weaponObject.ammoAmount<=0)
         {
-            //Reload();
+            Reload();
             return;
         }
         weaponObject.ammoAmount--;

@@ -16,6 +16,8 @@ public class GameMenuManager : MonoBehaviour
     public PlayerDisabler disabler;
     private static readonly string idqualityKey = "idQuality";
 
+    public GameObject[] onScreenControls;
+
     void Start()
     {
        ChangeQuality();
@@ -34,6 +36,10 @@ public class GameMenuManager : MonoBehaviour
             Time.timeScale = 0;
             gameMenu.SetActive(true);
             disabler.Disable();
+            for (int i = 0; i < onScreenControls.Length; i++)
+            {
+                onScreenControls[i].SetActive(false);
+            }
         }
         else
         {
@@ -43,6 +49,10 @@ public class GameMenuManager : MonoBehaviour
             if(settingsPanel.activeSelf)
             {
                 settingsPanel.SetActive(false);
+            }
+            for (int i = 0; i < onScreenControls.Length; i++)
+            {
+                onScreenControls[i].SetActive(true);
             }
         }
     }

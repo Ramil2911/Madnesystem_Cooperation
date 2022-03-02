@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniversalMobileController;
 
 public class TFPInput : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class TFPInput : MonoBehaviour
     public string xMouseName = "Mouse X";
     public string yMouseName = "Mouse Y";
     
-    public Trackpad mouseTrackpad;
+    public SpecialTouchPad mouseTrackpad;
     public Joystick movementJoystick;
 
     public float XAxis()
@@ -30,12 +31,12 @@ public class TFPInput : MonoBehaviour
 
     public float XMouse()
     {
-        return mouseTrackpad.lastDelta.x;
+        return mouseTrackpad.GetHorizontalValue();
     }
 
     public float YMouse()
     {
-        return mouseTrackpad.lastDelta.y;
+        return mouseTrackpad.GetVerticalValue();
     }
 
     public virtual void SetAxisNames(string jumpBtn, string crouchBtn, 
