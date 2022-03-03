@@ -31,11 +31,13 @@ public class TFPInput : MonoBehaviour
 
     public float XMouse()
     {
+        //print(mouseTrackpad.GetHorizontalValue());
         return mouseTrackpad.GetHorizontalValue();
     }
 
     public float YMouse()
     {
+        //print(mouseTrackpad.GetVerticalValue());
         return mouseTrackpad.GetVerticalValue();
     }
 

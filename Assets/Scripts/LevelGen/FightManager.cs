@@ -43,7 +43,6 @@ public class FightManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            EnableRendering();
             if (!_wasAlreadyIn)
             {
                 CloseDoors();
@@ -52,14 +51,6 @@ public class FightManager : MonoBehaviour
                 Destroy(box);
             }
         } //хз вообще почему occlusion culling не работает
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            DisableRendering();
-        }
     }
 
     private void CloseDoors()
@@ -176,41 +167,5 @@ public class FightManager : MonoBehaviour
     }
     public void ClearDeadEnemy(EnemyPathfinding enemy) {
         attackingEnemies.Remove(enemy);
-    }
-
-    
-    private void EnableRendering()
-    {
-        if (transform.parent.TryGetComponent<MeshRenderer>(out var renderer))
-        {
-            renderer.enabled = true;
-        }
-        var child = transform.GetChild(3);
-        if (child != null)
-        {
-            child.gameObject.SetActive(true);
-        }
-        /*foreach (var comp in GetComponentsInChildren<MeshRenderer>())
-        {
-            comp.enabled = true;
-        }*/
-    }
-    
-    private void DisableRendering()
-    {
-        if (transform.parent.TryGetComponent<MeshRenderer>(out var renderer))
-        {
-            renderer.enabled = false;
-        }
-
-        var child = transform.GetChild(3);
-        if (child != null)
-        {
-            child.gameObject.SetActive(false);
-        }
-        /*foreach (var comp in GetComponentsInChildren<MeshRenderer>())
-        {
-            comp.enabled = false;
-        }*/
     }
 }

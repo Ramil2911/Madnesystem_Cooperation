@@ -34,7 +34,6 @@ public class InventoryBarController : MonoBehaviour
 
     private void SlotChangedListener()
     {
-        var item = handsController.item;
         var index = (int)handsController.slot;
 
         for (var i = 0; i < 8; i++)

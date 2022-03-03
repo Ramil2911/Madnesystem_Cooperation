@@ -13,6 +13,8 @@ TagManager:
   - Enemy
   - ResetButton
   - ShootButton
+  - Room
+  - RoomCollider
   layers:
   - Default
   - TransparentFX

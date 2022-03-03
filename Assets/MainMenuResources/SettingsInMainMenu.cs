@@ -17,7 +17,7 @@ public class SettingsInMainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        applier ??= GameObject.Find("Player").GetComponent<SettingsApplier>();
+        applier ??= GameObject.Find("Player")?.GetComponent<SettingsApplier>();
         SetStartVolumes();
     }
 
@@ -46,9 +46,9 @@ public class SettingsInMainMenu : MonoBehaviour
             soundsVolumeSlider.value = PlayerPrefs.GetFloat("SoundVolume");
         }
         gameObject.SetActive(false);
-        applier.ApplySensitivity();
-        applier.ApplyMusicSound();
-        applier.ApplyEnvironmentSound();
+        applier?.ApplySensitivity();
+        applier?.ApplyMusicSound();
+        applier?.ApplyEnvironmentSound();
     }
     public void CheckDropDown()
     {
@@ -61,17 +61,20 @@ public class SettingsInMainMenu : MonoBehaviour
     public void SetMouseSensitivity()
     {
         PlayerPrefs.SetFloat("mouseSensitivity", mouseSensitivity.value);
-        applier.ApplySensitivity();
+        if(applier==null) Debug.Log("applier is null?");
+        else applier.ApplySensitivity();
     }
 
     public void ChangeMusicVolume()
     {
         PlayerPrefs.SetFloat("MusicVolume", musicVolumeSlider.value);
-        applier.ApplyMusicSound();
+        if(applier==null) Debug.Log("applier is null?");
+        else applier.ApplyMusicSound();
     }
     public void ChangeSoundVolume()
     {
         PlayerPrefs.SetFloat("SoundVolume", soundsVolumeSlider.value);
-        applier.ApplyEnvironmentSound();
+        if(applier==null) Debug.Log("applier is null?");
+        else applier.ApplyEnvironmentSound();
     }
 }

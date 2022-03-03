@@ -45,12 +45,14 @@ namespace UniversalMobileController
         }
         public void OnPointerDown(PointerEventData eventData)
         {
+            print("DownPointer");
             pressingTouchPad = true;
             eventPointerID = eventData.pointerId;
             PointerOld = eventData.position;
         }
         public void OnPointerUp(PointerEventData eventData)
         {
+            print("DownUp");
             pressingTouchPad = false;
         }
         public float GetVerticalValue()
