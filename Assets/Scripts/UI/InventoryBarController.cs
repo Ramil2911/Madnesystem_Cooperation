@@ -8,21 +8,17 @@ public class InventoryBarController : MonoBehaviour
     [SerializeField] private InventoryComponent inventoryComponent;
     [SerializeField] private HandsController handsController;
 
-    private InventoryUIItem[] bar = new InventoryUIItem[8];
+    private InventoryUIItem bar;
 
     void Start()
     {
-        for (var i = 0; i < 8; i++)
+        var item = this.transform.GetChild(0);
+        bar = new InventoryUIItem()
         {
-            var item = this.transform.GetChild(i);
-
-            bar[i] = new InventoryUIItem()
-            {
-                panelImage = item.GetComponent<Image>(),
-                spriteImage = item.GetChild(0).GetComponent<Image>(),
-                text = item.GetChild(1).GetComponent<TextMeshProUGUI>()
-            };
-        }
+            panelImage = item.GetComponent<Image>(),
+            spriteImage = item.GetChild(0).GetComponent<Image>(),
+            text = item.GetChild(1).GetComponent<TextMeshProUGUI>()
+        };
         SlotChangedListener();
         handsController.activeSlotChangedEvent.AddListener(SlotChangedListener);
         inventoryComponent.inventoryChangedEvent.AddListener(InventoryChangedListener);
@@ -35,30 +31,26 @@ public class InventoryBarController : MonoBehaviour
     private void SlotChangedListener()
     {
         var index = (int)handsController.slot;
-
-        for (var i = 0; i < 8; i++)
+        if (inventoryComponent[index] != null && inventoryComponent[index].description != null)
         {
-            if (inventoryComponent[i] != null && inventoryComponent[i].description != null)
-            {
-                bar[i].panelImage.color = i == index ? Color.grey : Color.white;
-                bar[i].spriteImage.sprite = inventoryComponent[i].description.Sprite;
-                bar[i].text.text = inventoryComponent[i].Stackable
-                    ? inventoryComponent[i].amount.ToString()
-                    : "";
-            }
-            else
-            {
-                bar[i].panelImage.color = Color.red;
-                bar[i].spriteImage.sprite = null;
-                bar[i].text.text = "";
-            }
+            bar.panelImage.color = Color.white;
+            bar.spriteImage.sprite = inventoryComponent[index].description.Sprite;
+            bar.text.text = inventoryComponent[index].Stackable
+                ? inventoryComponent[index].amount.ToString()
+                : "";
+        }
+        else
+        {
+            bar.panelImage.color = Color.red;
+            bar.spriteImage.sprite = null;
+            bar.text.text = "";
         }
     }
-}
 
-internal struct InventoryUIItem
-{
-    public Image panelImage;
-    public Image spriteImage;
-    public TextMeshProUGUI text;
+    private struct InventoryUIItem
+    {
+        public Image panelImage;
+        public Image spriteImage;
+        public TextMeshProUGUI text;
+    }
 }

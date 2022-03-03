@@ -4,57 +4,19 @@ using UniversalMobileController;
 
 public class RevolverController : WeaponController
 {
-    public VFXController vfxController;
-    private static readonly int State = Animator.StringToHash("State");
-    public GameObject bullet;
-    
-    //recoil
-    public Vector2 impact = new Vector2(.1f, .1f);
-    public float impactDuration = 0.1f;
-
-    private SpecialButton button;
-
     private void Start()
     {
-        button = GameObject.FindWithTag("ShootButton").GetComponent<SpecialButton>();
+        FindUI();
         Reload();
     }
     void Update()
     {
         if(!isActive) return;
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
-        {
-            if(doIShoot == false)
-                animator.SetInteger(State, 1);
-        }
-        else 
-        {
-            if(doIShoot == false)
-                animator.SetInteger(State, 0);
-        }
-
-        if (weaponObject.weaponType == WeaponType.Auto && button.isPressed)
-        {
-            Shoot();
-        }
-        else if (weaponObject.weaponType == WeaponType.SemiAuto && button.isDown)
-        {
-            if (doIShoot == false)
-            {
-                doIShoot = true;
-                Shoot();
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                Reload();
-            }
-        }
+        ammoText.text = weaponObject.ammoAmount + "/" + weaponObject.maxAmmoAmount;
+        RunCommonShootingStuff();
     }
 
-    void Shoot()
+    public override void Shoot()
     {
         
         if(weaponObject.ammoAmount<=0)
@@ -72,7 +34,7 @@ public class RevolverController : WeaponController
         var bulletGO = Instantiate(bullet, transform1.position + transform1.forward, transform1.rotation);
         //bulletGO.GetComponent<Rigidbody>().velocity = transform.forward * weaponObject.BulletSpeed;
         var bulletComponent = bulletGO.GetComponent<BulletComponent>();
-        bulletComponent.damageAmount = (int)weaponObject.damage;
+        bulletComponent.damageAmount = weaponObject.damage*WeaponBuff.damageMultiplier;
         bulletComponent.owner = this.gameObject;
         
         //отдача
@@ -83,8 +45,9 @@ public class RevolverController : WeaponController
 //        ammo.text = weaponObject.ammoAmount.ToString() + " / " + weaponObject.maxAmmoAmount;
     }
 
-    void Reload()
+    public override void Reload()
     {
+        if(weaponObject.ammoAmount == weaponObject.maxAmmoAmount) return;
         doIShoot = false;
         
         animator.SetInteger(State,3 );

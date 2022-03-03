@@ -69,14 +69,7 @@ public class GameMenuManager : MonoBehaviour
     }
     public void ChangeActiveSettingsPanel()
     {
-        if(!settingsPanel.activeSelf)
-        {
-            settingsPanel.SetActive(true);
-        }
-        else
-        {
-            settingsPanel.SetActive(false);
-        }
+        settingsPanel.SetActive(!settingsPanel.activeSelf);
     }
     public void ChangeQuality()
     {

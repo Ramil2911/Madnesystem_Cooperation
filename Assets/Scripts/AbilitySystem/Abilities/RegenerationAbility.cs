@@ -9,6 +9,8 @@ public class RegenerationAbility : Ability
     public override float DurationRemaining { get; set; } = float.PositiveInfinity;
     public override float Duration { get; set; } = float.PositiveInfinity;
 
+    public override string Name { get; set; } = "Ускоренная регенерация";
+
     public float pointsPerSecond = 1;
 
     public override void OnUpdate(JobHandle? handle)

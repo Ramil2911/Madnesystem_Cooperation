@@ -10,11 +10,12 @@ using UnityEngine;
 using UnityEngine.Jobs;
 using static Unity.Mathematics.math;
 
-[AbilityId(1)]
+[AbilityId(4)]
 public unsafe class PowerUpAbility : Ability
 {
     public override float DurationRemaining { get; set; }
     public override float Duration { get; set; }
+    public override string Name { get; set; }
 
     private int oldSize = -1;
 

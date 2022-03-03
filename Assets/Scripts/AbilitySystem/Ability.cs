@@ -4,11 +4,11 @@ using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.Jobs;
 
-[Serializable]
 public abstract class Ability
 {
     public abstract float DurationRemaining { get; set; }
     public abstract float Duration { get; set; }
+    public abstract string Name { get; set; }
 
     public Transform transform;
     public EntityComponent entityComponent;

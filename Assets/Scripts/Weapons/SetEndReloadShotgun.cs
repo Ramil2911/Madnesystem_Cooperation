@@ -16,7 +16,7 @@ public class SetEndReloadShotgun : MonoBehaviour
     public void AddAmmo()
     {
         shotgunController.weaponObject.ammoAmount += 1;
-        if (shotgunController.weaponObject.ammoAmount < shotgunController.weaponObject.maxAmmoAmount)
+        if (shotgunController.weaponObject.ammoAmount < shotgunController.weaponObject.maxAmmoAmount-1)
         {
             shotgunController.animator.SetInteger(State, 3);
             shotgunController.amIReloading = true;

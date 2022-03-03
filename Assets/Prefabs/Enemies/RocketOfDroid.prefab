@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1368603561272539226}
   - component: {fileID: 1387441652351261347}
   - component: {fileID: -1767905763670627630}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: RocketOfDroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,6 +239,10 @@ PrefabInstance:
     - target: {fileID: 87270197950505012, guid: a35627a830cd80d42a94c14f9f5c8cfe, type: 3}
       propertyPath: m_Name
       value: Rocket
+      objectReference: {fileID: 0}
+    - target: {fileID: 87270197950505012, guid: a35627a830cd80d42a94c14f9f5c8cfe, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3252288097011930936, guid: a35627a830cd80d42a94c14f9f5c8cfe, type: 3}
       propertyPath: m_RootOrder
