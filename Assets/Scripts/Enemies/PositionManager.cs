@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class PositionManager : MonoBehaviour
 {
-    private bool _isTaked = false;
+    private bool _isTaken = false;
 
-    public bool GetIsTaked() {
-        return _isTaked;
+    public bool GetIsTaken() {
+        return _isTaken;
     }
 
     public void TakePosition() {
-        _isTaked = true;
+        _isTaken = true;
     }
 
     public void FreePosition()
     {
-        _isTaked = false;
+        _isTaken = false;
     }
 }

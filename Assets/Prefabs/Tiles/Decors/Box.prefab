@@ -19,7 +19,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &405644970978431944
 Transform:
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1074939051144350066}
-  m_Mesh: {fileID: -5928785198427282456, guid: 3962b88fb4fdbc7429909ac02b8950e7, type: 3}
+  m_Mesh: {fileID: -5495902117074765545, guid: 3962b88fb4fdbc7429909ac02b8950e7, type: 3}
 --- !u!23 &1579091314354956455
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -64,8 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b98e63fdb55c2184e942a81be68dfddd, type: 2}
-  - {fileID: 2100000, guid: 742c083018b25d64fbeb6809ebab7c48, type: 2}
+  - {fileID: 2100000, guid: 76196e76a77716e41a9d9bf71834105e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

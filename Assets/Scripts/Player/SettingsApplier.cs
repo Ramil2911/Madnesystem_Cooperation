@@ -13,17 +13,7 @@ public class SettingsApplier : MonoBehaviour
             return _controller;
         }
     }
-    [SerializeField]
-    private Camera _camera;
-    public new Camera camera
-    {
-        get
-        {
-            _camera ??= GetComponent<Camera>();
-            return _camera;
-        }
-    }
-    
+
     void Start()
     {
         ApplyMusicSound();
@@ -43,6 +33,13 @@ public class SettingsApplier : MonoBehaviour
 
     public void ApplySensitivity()
     {
-        controller.sensitivity = PlayerPrefs.GetFloat("mouseSensitivity");
+        if (controller == null)
+        {
+            Debug.Log("no FPSController set");
+        }
+        else
+        {
+            controller.sensitivity = PlayerPrefs.GetFloat("mouseSensitivity");
+        }
     }
 }

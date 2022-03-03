@@ -6,7 +6,7 @@ using UnityEngine.VFX;
 
 public class BulletComponent : NetworkBehaviour
 {
-    [SerializeField] public int damageAmount = 10;
+    [SerializeField] public float damageAmount = 10;
     [SerializeField] public float timeToLive = 10;
     private float _lifetime = 0.0f;
     private Vector3 _previousPos;
@@ -48,7 +48,7 @@ public class BulletComponent : NetworkBehaviour
         if(explosion != null)
         {
             var go = Instantiate(explosion, transform.position, transform.rotation);
-            go.GetComponent<VisualEffect>().SetVector3("Direction", new Vector3(0,0,0));
+            //go.GetComponent<VisualEffect>().SetVector3("Direction", new Vector3(0,0,0));
         }
     }
 }

@@ -14,13 +14,12 @@ GameObject:
   - component: {fileID: 2994725068804813641}
   - component: {fileID: 7268381337105600112}
   - component: {fileID: 207973571546259918}
-  - component: {fileID: 8295145097790188664}
   m_Layer: 0
   m_Name: BoxRadioactive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &405644970978431944
 Transform:
@@ -133,24 +132,3 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!114 &8295145097790188664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074939051144350066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc6c8a0d8d3de074a86bd8d4ec59238d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 10
-  damage: 2
-  fadeDuration: 4
-  inheritedRadius: 0
-  inheritedDamage: 0
-  inheritedDuration: 0
-  entityComponent: {fileID: 0}
-  particles: {fileID: 4226178211084879205, guid: 1cb35069c40fef040920d72aa0b6608b, type: 3}
-  isPlayer: 0

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TheFirstPerson.Helper;
 
 namespace TheFirstPerson
@@ -686,13 +684,13 @@ namespace TheFirstPerson
 
             if (mouseLocked)
             {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+                /*Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;*/
             }
             else
             {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
+                /*Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;*/
             }
 
         }
@@ -807,8 +805,8 @@ namespace TheFirstPerson
             {
                 running = runHeld;
             }
-            	jumpHeld = standard ? Input.GetButton(jumpBtn) : customInputSystem.JumpHeld();
-if (standard ? Input.GetButtonDown(jumpBtn) : customInputSystem.JumpPressed())
+            jumpHeld = standard ? Input.GetButton(jumpBtn) : customInputSystem.JumpHeld();
+            if (standard ? Input.GetButtonDown(jumpBtn) : customInputSystem.JumpPressed())
             {
                 jumpPressed = coyoteTime;
                 if (moveInFixedUpdate)

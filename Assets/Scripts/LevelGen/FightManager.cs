@@ -17,6 +17,7 @@ public class FightManager : MonoBehaviour
     private BoxCollider box;
     private bool isISwitchMusic = false;
     private List<Transform> enemiesPositions = new List<Transform>();
+    private bool shot = false;
 
     [SerializeField] private List<EnemyPathfinding> holdingEnemies = new List<EnemyPathfinding>();
     [SerializeField] private List<EnemyPathfinding> attackingEnemies = new List<EnemyPathfinding>();
@@ -40,16 +41,16 @@ public class FightManager : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (!_wasAlreadyIn)
+        if (other.CompareTag("Player"))
         {
-            if (other.CompareTag("Player"))
+            if (!_wasAlreadyIn)
             {
                 CloseDoors();
                 SpawnEnemies();
                 _wasAlreadyIn = true;
                 Destroy(box);
             }
-        }
+        } //хз вообще почему occlusion culling не работает
     }
 
     private void CloseDoors()
@@ -107,7 +108,7 @@ public class FightManager : MonoBehaviour
             EnemyPathfinding enemy = holdingEnemies[i];
             float maxLengthFromPlayer = -1f;
             int selectedPosition = 0;
-            List<Transform> unusedEnemiesPositions = enemiesPositions.FindAll(e => !e.GetComponent<PositionManager>().GetIsTaked());
+            List<Transform> unusedEnemiesPositions = enemiesPositions.FindAll(e => !e.GetComponent<PositionManager>().GetIsTaken());
             Vector3 playerPosition = GameObject.FindWithTag("Player").transform.position;
             for (int j = 0; j < enemiesPositions.Count; j++)
             {
@@ -135,7 +136,7 @@ public class FightManager : MonoBehaviour
 
     public void CheckForFightEnd()
     {
-
+        
         if (transform.Find("Enemies").childCount <= 0)
         {
             if (isISwitchMusic == true)
@@ -149,7 +150,8 @@ public class FightManager : MonoBehaviour
 
     private void FightEndSequence()
     {
-        StopCoroutine("ChangeHoldingPositions");
+        shot = true;
+        StopCoroutine(nameof(ChangeHoldingPositions));
         OpenDoors();
     }
 

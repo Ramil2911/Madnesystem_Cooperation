@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
+using UniversalMobileController;
 
 public class GameMenuManager : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class GameMenuManager : MonoBehaviour
 
     public GameObject settingsPanel;
 
-    public static Volume curPostProcessing;
+    public Volume curPostProcessing;
 
     public VolumeProfile[] allPostProcessings;
 
@@ -16,13 +17,17 @@ public class GameMenuManager : MonoBehaviour
     public PlayerDisabler disabler;
     private static readonly string idqualityKey = "idQuality";
 
+    public GameObject[] onScreenControls;
+
+    public SpecialButton pauseButton;
+
     void Start()
     {
        ChangeQuality();
     }
     void Update() 
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(pauseButton.isDown)
         {
             ChangeActiveGameMenu();
         }
@@ -31,19 +36,17 @@ public class GameMenuManager : MonoBehaviour
     {
         if(gameMenu.activeSelf == false)
         {
+            for (int i = 0; i < onScreenControls.Length; i++)
+            {
+                onScreenControls[i].SetActive(false);
+            }
             Time.timeScale = 0;
             gameMenu.SetActive(true);
             disabler.Disable();
         }
         else
         {
-            Time.timeScale = 1;
-            gameMenu.SetActive(false);
-            disabler.Enable();
-            if(settingsPanel.activeSelf)
-            {
-                settingsPanel.SetActive(false);
-            }
+            ReturnToGame();
         }
     }
     public void LoadMainMenu()
@@ -52,9 +55,13 @@ public class GameMenuManager : MonoBehaviour
     }
     public void ReturnToGame() //на ui
     {
-        Cursor.visible = false;
+        for (int i = 0; i < onScreenControls.Length; i++)
+        {
+            onScreenControls[i].SetActive(true);
+        }
+        Time.timeScale = 1;
         gameMenu.SetActive(false);
-        Time.timeScale = 1;  
+        disabler.Enable();
         if(settingsPanel.activeSelf)
         {
             settingsPanel.SetActive(false);
@@ -62,14 +69,7 @@ public class GameMenuManager : MonoBehaviour
     }
     public void ChangeActiveSettingsPanel()
     {
-        if(!settingsPanel.activeSelf)
-        {
-            settingsPanel.SetActive(true);
-        }
-        else
-        {
-            settingsPanel.SetActive(false);
-        }
+        settingsPanel.SetActive(!settingsPanel.activeSelf);
     }
     public void ChangeQuality()
     {
