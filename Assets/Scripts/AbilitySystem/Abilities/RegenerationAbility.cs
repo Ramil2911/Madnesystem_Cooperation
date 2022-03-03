@@ -10,6 +10,7 @@ public class RegenerationAbility : Ability
     public override float Duration { get; set; } = float.PositiveInfinity;
 
     public override string Name { get; set; } = "Ускоренная регенерация";
+    public override string Description { get; set; }
 
     public float pointsPerSecond = 1;
 

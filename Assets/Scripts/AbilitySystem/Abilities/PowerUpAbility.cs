@@ -16,6 +16,7 @@ public unsafe class PowerUpAbility : Ability
     public override float DurationRemaining { get; set; }
     public override float Duration { get; set; }
     public override string Name { get; set; }
+    public override string Description { get; set; } = "Та бутылка зарядила вас силой!";
 
     private int oldSize = -1;
 
