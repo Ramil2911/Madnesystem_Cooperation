@@ -1726,12 +1726,13 @@ MonoBehaviour:
   recoilController: {fileID: 0}
   ammo: {fileID: 0}
   animator: {fileID: 5889737670491195249}
-  bullet: {fileID: 8862067340763788854, guid: e05ee3eef9c1eb74f88c0a80c3d5ab44, type: 3}
+  bullet: {fileID: 13468407386240618, guid: 74e215f64cd3cf84f90bbb31b0c79062, type: 3}
   impact: {x: -3.75, y: 0}
   impactDuration: 0.15
   vfxController: {fileID: 5392491834303512498}
   doIShoot: 0
   amIReloading: 0
+  drobAmount: 7
 --- !u!114 &7836120216113289544
 MonoBehaviour:
   m_ObjectHideFlags: 0

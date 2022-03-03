@@ -14,12 +14,10 @@ public class AbilityPanelController : MonoBehaviour
         string str = "Постоянные эффекты:\n";
         for (var i = 0; i < abilityComponent.Abilities.Length; i++)
         {
-            str += abilityComponent.Abilities[i].Name + " : " + abilityComponent.Abilities[i].Name + "\n";
+            str += $"> {abilityComponent.Abilities[i].Name}\n{abilityComponent.Abilities[i].Description}\n";
         }
 
         str += "\nВременные эффекты:";
         text.text = str;
     }
-    
-    
 }

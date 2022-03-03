@@ -6,6 +6,7 @@ public class DamageBuffAbility : Ability
     public override float Duration { get; set; } = float.PositiveInfinity;
 
     public override string Name { get; set; } = "Всё БЕСИТ!";
+    public override string Description { get; set; } = "Космопендосы взбесили вас!";
 
     private int _level = 1;
     public int Level
@@ -16,5 +17,10 @@ public class DamageBuffAbility : Ability
             _level = value;
             WeaponBuff.damageMultiplier = 1 + (float)_level / 10;
         }
+    }
+
+    public override void OnStart()
+    {
+        WeaponBuff.damageMultiplier = 1 + (float)_level / 10;
     }
 }

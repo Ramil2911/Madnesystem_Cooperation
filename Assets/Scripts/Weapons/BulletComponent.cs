@@ -1,10 +1,9 @@
 using System;
-using Mirror;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.VFX;
 
-public class BulletComponent : NetworkBehaviour
+public class BulletComponent : MonoBehaviour
 {
     [SerializeField] public float damageAmount = 10;
     [SerializeField] public float timeToLive = 10;

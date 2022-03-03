@@ -1,6 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using JetBrains.Annotations;
 using Unity.Jobs;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Jobs;
 
@@ -9,6 +13,7 @@ public abstract class Ability
     public abstract float DurationRemaining { get; set; }
     public abstract float Duration { get; set; }
     public abstract string Name { get; set; }
+    public abstract string Description { get; set; }
 
     public Transform transform;
     public EntityComponent entityComponent;
@@ -50,5 +55,12 @@ public abstract class Ability
     public virtual void OnTriggerExit(Collider other)
     {
         
+    }
+    
+    public static Type GetById(int id)
+    {
+        return Assembly.GetExecutingAssembly().GetTypes()
+            .FirstOrDefault(t => t.IsClass && !t.IsAbstract && t.HasAttribute<AbilityId>() &&
+                                 t.GetCustomAttribute<AbilityId>().id == id);
     }
 }
