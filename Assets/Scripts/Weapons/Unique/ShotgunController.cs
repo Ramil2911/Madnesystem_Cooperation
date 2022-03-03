@@ -5,6 +5,8 @@ using UniversalMobileController;
 //TODO: rewrite weapon scripts, they all need common parts to be moved to WeaponController to avoid boilerplate code
 public class ShotgunController : WeaponController
 {
+    public int drobAmount = 7;
+    
     private void Start()
     {
         FindUI();
@@ -34,10 +36,11 @@ public class ShotgunController : WeaponController
         var transform1 = vfxController.transform;
         var bulletGO = Instantiate(bullet, transform1.position + transform1.forward, transform1.rotation);
         //bulletGO.GetComponent<Rigidbody>().velocity = transform.forward * weaponObject.BulletSpeed;
-        var bulletComponent = bulletGO.GetComponent<BulletComponent>();
-        bulletComponent.damageAmount = weaponObject.damage*WeaponBuff.damageMultiplier;
+        var bulletComponent = bulletGO.GetComponent<DrobSpawner>();
+        bulletComponent.damage = weaponObject.damage*WeaponBuff.damageMultiplier;
         bulletComponent.owner = this.gameObject;
-        
+        bulletComponent.bulletAmount = drobAmount;
+
         //отдача
         recoilController.Add(impact, impactDuration);
     }

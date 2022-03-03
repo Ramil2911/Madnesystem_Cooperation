@@ -18,7 +18,7 @@ public class Sway : MonoBehaviour
     {
         var transform1 = transform;
         transform1.rotation = Quaternion.identity;
-        transform.rotation = Quaternion.Slerp(oldRotation, transform1.parent.rotation, speed);
+        transform.rotation = Quaternion.Lerp(oldRotation, transform1.parent.rotation, speed);
         oldRotation = transform1.rotation;
     }
 }

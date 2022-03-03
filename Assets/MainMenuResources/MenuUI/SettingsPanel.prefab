@@ -2396,7 +2396,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mouse Sensitivity
+  m_text: Sensitivity
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7ecb020a5ae7064448775fa8c1c0d0d2, type: 2}
   m_sharedMaterial: {fileID: 6748262058800684626, guid: 7ecb020a5ae7064448775fa8c1c0d0d2, type: 2}
