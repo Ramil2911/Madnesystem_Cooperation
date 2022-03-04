@@ -18,6 +18,8 @@ public class ShotgunController : WeaponController
         if(!isActive || amIReloading) return;
         ammoText.text = weaponObject.ammoAmount + "/" + weaponObject.maxAmmoAmount;
         RunCommonShootingStuff();
+        if (shootWasOneFrameBefore) doIShoot = false;
+        shootWasOneFrameBefore = false;
     }
     
     public override void Shoot()

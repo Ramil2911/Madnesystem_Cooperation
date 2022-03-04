@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -405,9 +406,13 @@ public class DungeonGenerator : MonoBehaviour
             goTile.TryGetComponent<MeshRenderer>(out var renderer);
             if (renderer != null) renderer.enabled = false;
         }
-        Transform origin = generatedTiles[generatedTiles.FindIndex(x => x.tile == _tileFrom)].tile;
-        generatedTiles.Add(new Tile(goTile.transform, origin));
-        goTile.name = tilePrefabs[index].name;
+        try {
+            Transform origin = generatedTiles[generatedTiles.FindIndex(x => x.tile == _tileFrom)].tile;
+            generatedTiles.Add(new Tile(goTile.transform, origin));
+            goTile.name = tilePrefabs[index].name;
+        } catch (ArgumentOutOfRangeException e){
+            SceneManager.LoadScene("Game");
+        }
         return goTile.transform;
     }
     

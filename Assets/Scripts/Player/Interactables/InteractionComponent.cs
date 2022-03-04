@@ -20,6 +20,7 @@ public class InteractionComponent : MonoBehaviour
 
     void Update()
     {
+        if(_activeInteractable == null) button.SetActive(false);
         if (Physics.Linecast(cameraTransform.position, cameraTransform.position + (cameraTransform.forward) * maxDistance, out var hit, layerMask)
             && (hit.transform.TryGetComponent<Interactable>(out var interactable) ||
                 (hit.transform.parent != null && hit.transform.parent.TryGetComponent(out interactable))))
