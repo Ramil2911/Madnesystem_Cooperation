@@ -16,6 +16,7 @@ TagManager:
   - Room
   - RoomCollider
   - AmmoText
+  - ProgressBar
   layers:
   - Default
   - TransparentFX
