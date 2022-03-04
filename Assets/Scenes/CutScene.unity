@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loader: {fileID: 1126794212889341090, guid: 79a7b1d8e68e4b64bbeb1f5e027a99a8, type: 3}
+  vid: {fileID: 1559040816}
 --- !u!1 &1826331867
 GameObject:
   m_ObjectHideFlags: 0

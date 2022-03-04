@@ -11,5 +11,6 @@ public class RotateHealthToPlayer : MonoBehaviour
     void Update()
     {
         transform.LookAt(player);
+        transform.Rotate(0f, 180f, 0f);
     }
 }

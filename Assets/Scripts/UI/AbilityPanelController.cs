@@ -23,7 +23,7 @@ public class AbilityPanelController : MonoBehaviour
         str += "\nВременные эффекты:";
         for (var i = 0; i < abilityComponent.Abilities.Length; i++)
         {
-            if (float.IsPositiveInfinity(abilityComponent.Abilities[i].Duration))
+            if (!float.IsPositiveInfinity(abilityComponent.Abilities[i].Duration))
             {
                 str += $"> {abilityComponent.Abilities[i].Name} - {(int)abilityComponent.Abilities[i].DurationRemaining}\n{abilityComponent.Abilities[i].Description}\n";
             }

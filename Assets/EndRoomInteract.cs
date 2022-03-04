@@ -7,6 +7,6 @@ public class EndRoomInteract : Interactable
     public GameObject loader;
 
     override public void Interact(GameObject actor) {
-        // Instantiate(loader).GetComponent<LoadScene>().Load(3);
+        Instantiate(loader).GetComponent<LoadScene>().Load(3);
     }
 }

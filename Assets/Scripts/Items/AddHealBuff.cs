@@ -5,6 +5,8 @@ public class AddHealBuff : Interactable
 {
     public override void Interact(GameObject actor)
     {
-        actor.GetComponent<AbilityComponent>().Add((Ability)Activator.CreateInstance(Ability.GetById(0)));
+        var instance = (Ability)Activator.CreateInstance(Ability.GetById(0));
+        actor.GetComponent<AbilityComponent>().Add(instance);
+        Destroy(this.gameObject);
     }
 }

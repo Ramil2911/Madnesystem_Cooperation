@@ -6,7 +6,7 @@ public class DamageBuffAbility : Ability
     public override float Duration { get; set; } = float.PositiveInfinity;
 
     public override string Name { get; set; } = "Всё БЕСИТ!";
-    public override string Description { get; set; } = "Космопендосы взбесили вас!";
+    public override string Description { get; set; } = "Роботы взбесили вас!";
 
     private int _level = 1;
     public int Level

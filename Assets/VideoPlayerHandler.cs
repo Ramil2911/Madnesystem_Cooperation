@@ -1,19 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class VideoPlayerHandler : MonoBehaviour
 {
     public GameObject loader;
+    public VideoPlayer vid;
 
-    void Start() {
-        GameObject camera = GameObject.Find("Main Camera");
-        var videoPlayer = camera.AddComponent<UnityEngine.Video.VideoPlayer>();
-        videoPlayer.loopPointReached += EndReached;
+
+    void Start() { vid.loopPointReached += CheckOver; }
+
+    void CheckOver(UnityEngine.Video.VideoPlayer vp)
+    {
+        SceneManager.LoadScene("BossFight");
     }
 
-    void EndReached(UnityEngine.Video.VideoPlayer vp) {
-        // Instantiate(loader).GetComponent<LoadScene>().Load(4);
-        print("BOSSSSSS FIGHT");
-    }
 }
