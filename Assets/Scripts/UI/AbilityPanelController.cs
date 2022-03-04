@@ -14,6 +14,7 @@ public class AbilityPanelController : MonoBehaviour
         string str = "Постоянные эффекты:\n";
         for (var i = 0; i < abilityComponent.Abilities.Length; i++)
         {
+
             if (float.IsPositiveInfinity(abilityComponent.Abilities[i].Duration))
             {
                 str += $"> {abilityComponent.Abilities[i].Name}\n{abilityComponent.Abilities[i].Description}\n";
