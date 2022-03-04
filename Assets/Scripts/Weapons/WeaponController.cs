@@ -21,6 +21,7 @@ public abstract class WeaponController : MonoBehaviour
     
     public bool doIShoot;
     public bool amIReloading;
+    public bool shootWasOneFrameBefore;
     
     protected static readonly int State = Animator.StringToHash("State");
 

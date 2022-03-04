@@ -3578,6 +3578,7 @@ GameObject:
   - component: {fileID: 6006694465917866518}
   - component: {fileID: 5679164100636568818}
   - component: {fileID: 733285794799873723}
+  - component: {fileID: -5901675575642136133}
   m_Layer: 0
   m_Name: GOArmsWithPistol
   m_TagString: Untagged
@@ -3703,6 +3704,20 @@ MonoBehaviour:
   vfxController: {fileID: 5464384954752549894}
   doIShoot: 0
   amIReloading: 0
+  shootWasOneFrameBefore: 0
+--- !u!114 &-5901675575642136133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9153461383877834233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5754ea90d3f51e94284dd55f1e9a21f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotgunController: {fileID: 0}
 --- !u!1001 &2261204943299211357
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,25 +5,25 @@ using UnityEngine;
 
 public class SetEndReloadShotgun : MonoBehaviour
 {
-    public ShotgunController shotgunController;
+    public WeaponController weaponController;
     private static readonly int State = Animator.StringToHash("State");
 
     public void Start()
     {
-        shotgunController = GetComponent<ShotgunController>();
+        weaponController = GetComponent<WeaponController>();
     }
 
     public void AddAmmo()
     {
-        shotgunController.weaponObject.ammoAmount += 1;
-        if (shotgunController.weaponObject.ammoAmount < shotgunController.weaponObject.maxAmmoAmount-1)
+        weaponController.weaponObject.ammoAmount += 1;
+        if (weaponController.weaponObject.ammoAmount < weaponController.weaponObject.maxAmmoAmount-1)
         {
-            shotgunController.animator.SetInteger(State, 3);
-            shotgunController.amIReloading = true;
+            weaponController.animator.SetInteger(State, 3);
+            weaponController.amIReloading = true;
         }
         else
         {
-            shotgunController.amIReloading = false;
+            weaponController.amIReloading = false;
         }
     }
 }

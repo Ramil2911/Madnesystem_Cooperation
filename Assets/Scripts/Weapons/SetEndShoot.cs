@@ -16,6 +16,6 @@ public class SetEndShoot : MonoBehaviour
     }
     public void EndShoot()
     {
-        weaponController.doIShoot = false;
+        weaponController.shootWasOneFrameBefore = true;
     }
 }
