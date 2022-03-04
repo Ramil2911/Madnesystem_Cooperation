@@ -52,11 +52,6 @@ public class GameMenuManager : MonoBehaviour
         }
     }
     
-    public void ChangeActiveSettingsPanel()
-    {
-        settingsPanel.SetActive(!settingsPanel.activeSelf);
-    }
-    
     public void SwitchAbilitiesPanel()
     {
         if(gameMenu.activeSelf) return;
@@ -98,6 +93,10 @@ public class GameMenuManager : MonoBehaviour
         gameMenu.SetActive(false);
         settingsPanel.SetActive(false);
         abilitiesMenu.SetActive(false);
+    }
+    public void ChangeActiveSettingsPanel()
+    {
+        settingsPanel.SetActive(!settingsPanel.activeSelf);
     }
 
     public void ChangeQuality()
